@@ -8,13 +8,13 @@ In this project, you have to compile
 The directions are also listed within the file.
 
 After you finish, use "make" to compile your file.
->> make
+> make
 
 Then run it by:
->> ./01Solution
+> ./01Solution
 
 To test your code, use
->> make test
+> make test
 
 Then run:
->> ./test
+> ./test
