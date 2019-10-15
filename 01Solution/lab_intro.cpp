@@ -28,7 +28,6 @@ PNG grayscale(PNG image) {
       pixel.s = 0;
     }
   }
-
   return image;
 }
 
@@ -55,7 +54,25 @@ PNG grayscale(PNG image) {
  * @return The image with a spotlight.
  */
 PNG createSpotlight(PNG image, int centerX, int centerY) {
+  for (unsigned x = 0; x < image.width(); x++) {
+    for (unsigned y = 0; y < image.height(); y++) {
+      HSLAPixel & pixel = image.getPixel(x, y);
 
+      // Calculate the direct distance between the pixel and the center
+      double distance = sqrt((x - centerX) * (x - centerX) + (y - centerY) * (y - centerY));
+
+      // Calculate the decrease of the luminance
+      double dec_lum = distance * 0.005;
+      if(dec_lum > .8){
+          dec_lum = .8;
+      }
+
+      // Change the luminance of the pic
+      pixel.l = pixel.l*(1-dec_lum);
+    }
+  }
+  
+  return image;
 }
  
 
@@ -70,7 +87,24 @@ PNG createSpotlight(PNG image, int centerX, int centerY) {
  * @return The illinify'd image.
 **/
 PNG illinify(PNG image) {
+  for (unsigned x = 0; x < image.width(); x++) {
+    for (unsigned y = 0; y < image.height(); y++) {
+      HSLAPixel & pixel = image.getPixel(x, y);
 
+      // This method modifies the picture into two colors: Illini Orange and Illini Blue
+      // The mean of 216 and 11 is 113.5, The mean of 216 and 360+11 is 323.5.
+      // So from 113.5 to 323.5, we let the hue of these pixels equal to 216 (BLUE),
+      // For else, equal to 11.
+      if(pixel.h>113.5 && pixel.h<323.5){
+        //Illini Blue” has a hue of 216
+        pixel.h = 216;
+      }else{
+        //Illini Orange” has a hue of 11
+        pixel.h = 11;
+      }
+    }
+  }
+  return image;
 }
  
 
@@ -88,4 +122,26 @@ PNG illinify(PNG image) {
 */
 PNG watermark(PNG firstImage, PNG secondImage) {
 
+  // Comfirm the size of the canvas.
+  unsigned int height = firstImage.height();
+  unsigned int width = firstImage.width();
+  if(height>secondImage.height()){
+    height = secondImage.height();
+  }
+  if(width>secondImage.width()){
+    width = secondImage.width();
+  }
+
+  // Change the color
+  for (unsigned x = 0; x < width; x++) {
+    for (unsigned y = 0; y < height; y++) {
+      HSLAPixel & pixel1 = firstImage.getPixel(x, y);
+      HSLAPixel & pixel2 = secondImage.getPixel(x, y);
+      if(pixel2.l==1.0){
+          pixel1.l += .2;
+      }
+    }
+  }
+
+  return firstImage;
 }

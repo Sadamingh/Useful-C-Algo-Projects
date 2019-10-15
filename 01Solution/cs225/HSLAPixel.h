@@ -28,7 +28,7 @@ namespace cs225 {
 
 			//Let h denote the hue of the pixel, storing the value of the hue in degrees as a double from
 			// [0, 360).
-			... // <REPLACE WITH YOUR CODE HERE>
+			double h; // <REPLACE WITH YOUR CODE HERE>
 			
 			/**
 			 * Saturation (denoted as s) indicates the degree to which the hue differs from a neutral
@@ -37,7 +37,7 @@ namespace cs225 {
 			**/
 
 			//Let s denote the saturation of the pixel, storing the value as a double from [0, 1].
-			... // <REPLACE WITH YOUR CODE HERE>
+			double s; // <REPLACE WITH YOUR CODE HERE>
 
 			/**
 			 * Luminance (denoted as l) indicates the level of illumination. The values run as percentages; 
@@ -46,12 +46,12 @@ namespace cs225 {
 			**/
 
 			//Let l denote the luminance of the pixel, storing the value as a double from [0, 1].
-			... // <REPLACE WITH YOUR CODE HERE>
+			double l; // <REPLACE WITH YOUR CODE HERE>
 
 
 			//Let a denote the alpha channel, how transparent the pixel is, storing the value as a double 
 			//from [0, 1].
-			... // <REPLACE WITH YOUR CODE HERE>
+			double a; // <REPLACE WITH YOUR CODE HERE>
 
 
 
@@ -65,13 +65,13 @@ namespace cs225 {
 			 * A default pixel is completely opaque (non-transparent) and white. Opaque implies that the
 			 * alpha component of the pixel is 1.0. Lower alpha values are (semi-)transparent.
 			**/
-			... // <REPLACE WITH YOUR CODE HERE>
+			HSLAPixel(); // <REPLACE WITH YOUR CODE HERE>
 
 			//Constructs an opaque HSLAPixel with the given hue, saturation, and luminance values.
-			... // <REPLACE WITH YOUR CODE HERE>
+			HSLAPixel(double hue, double saturation, double luminance); // <REPLACE WITH YOUR CODE HERE>
 
 			//Constructs an HSLAPixel with the given hue, saturation, luminance, and alpha values.
-			... // <REPLACE WITH YOUR CODE HERE>
+			HSLAPixel(double hue, double saturation, double luminance, double alpha);  // <REPLACE WITH YOUR CODE HERE>
 			
 	};
 }
