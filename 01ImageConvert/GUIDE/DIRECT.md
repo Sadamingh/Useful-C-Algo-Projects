@@ -11,7 +11,7 @@ After you finish, use "make" to compile your file.
 > make
 
 Then run it by:
-> ./01Solution
+> ./lab_intro
 
 To test your code, use
 > make test
